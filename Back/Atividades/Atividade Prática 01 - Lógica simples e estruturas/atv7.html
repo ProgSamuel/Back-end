@@ -1,0 +1,25 @@
+<script>
+    var totalEleitores = 100;
+
+    var vtBrancos = 20;
+    var perBrancos = (totalEleitores * vtBrancos) / 100 + '%'
+
+    var vtNulos = 2;
+    var perNulos = (totalEleitores * vtNulos) / 100 + '%'
+
+    var vtValidos = totalEleitores - (vtBrancos + vtNulos)
+    var perValidos = (totalEleitores * vtValidos) / 100 + '%'
+
+    document.write("Total de Eleitores " + totalEleitores +
+        "<br>" +
+        "Percentual de votos Brancos " + perBrancos +
+        "<br>" +
+        "Percentual de votos Nulos " + perNulos +
+        "<br>" +
+        "Percentual de votos Válidos " + perValidos
+    );
+</script>
+
+<!-- Desenvolva um algoritmo para ler o número total de eleitores de um município, o número de votos brancos, nulos e válidos.
+
+Calcular e escrever o percentual que cada um representa em relação ao total de eleitores. -->

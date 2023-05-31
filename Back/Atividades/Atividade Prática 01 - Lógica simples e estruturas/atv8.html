@@ -1,0 +1,24 @@
+<script>
+    var n1 = 9;
+    var n2 = 11;
+
+    function comparar(n1, n2) {
+        if (n1 === n2) {
+            return 'Números Iguais';
+        } else if (n1 > n2) {
+            return 'O primeiro é maior';
+        } else {
+            return 'O segundo é maior';
+        }
+    }
+
+    var comparados = comparar(n1, n2);
+
+    document.write("Qual é maior? " + n1 + " ou " + n2 + " - " + comparados);
+</script>
+
+
+<!-- Desenvolva um algoritmo para ler dois valores e imprimir uma das três mensagens a seguir:
+a. ‘Números iguais’, caso os números sejam iguais;
+b. ‘Primeiro é maior’, caso o primeiro seja maior que o segundo;
+c. ‘Segundo maior’, caso o segundo seja maior que o primeiro. -->

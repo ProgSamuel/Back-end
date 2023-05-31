@@ -1,0 +1,40 @@
+<!-- 11. Crie um algoritmo que armazene um número inteiro positivo, e gere
+um alerta com as seguintes mensagens:
+a. “Número é par!”, se o valor armazenado for par;
+b. “Número é impar!”, se o valor armazenado for ímpar; -->
+
+<script>
+
+    /* ENTRADA  */
+    var np = 19795764;
+
+    /*  PROCESSO */
+
+    function verificar(np) {
+        calculo1 = np % 2
+        if (calculo1 = 0) { return 'número é ÍMPAR' }
+        else { return 'número é PAR' }
+    }
+
+    /* VERIFICAÇÃO */
+
+    var parOUimpar = verificar(np);
+
+    /* ALERTA */
+
+    alert("O número inserido foi: "
+        + np
+
+        + " - Ele é um "
+        + parOUimpar)
+
+    /* PARA IMPRIMIR NA JANELA  */
+
+    /* document.write("O número inserido foi: "
+        + np
+        + "<br>"
+        + "Ele é um"
+        + parOUimpar
+    ); */
+
+</script>

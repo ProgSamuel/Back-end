@@ -1,0 +1,33 @@
+<script>
+
+    var macacomprada = 9;
+
+    function preco(macacomprada) {
+        if (macacomprada >= 12) {
+            return macacomprada*0.25 ;
+        } 
+        else {
+            return (macacomprada*0.30);
+        }
+    }
+
+    var valorFinal = preco(macacomprada).toFixed(2); 
+
+    document.write( "Quantidade de maçãs compradas:  "
+    + macacomprada 
+    + "<br>"
+    + "Valor Total da compra R$ "
+    + valorFinal);
+</script>
+
+<!-- 
+    
+    QUESTÃO
+    
+    As maçãs desta estação custam R$0,30 se forem compradas menos do que uma dúzia, e R$0,25 se forem compradas pelo menos
+doze. Desenvolva um algoritmo que leia o número de maçãs compradas, calcule e escreva o valor total da compra. 
+
+
+DÚVIDA:
+
+PQ QND USO OS VALORES 3, 6 e 9 etc o valor retornado não é inteiro?-->

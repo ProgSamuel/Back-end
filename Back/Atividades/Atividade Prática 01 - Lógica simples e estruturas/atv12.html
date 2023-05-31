@@ -1,0 +1,31 @@
+<!-- 12. Escreva um algoritmo que armazene o ano atual e o ano de
+nascimento de uma pessoa. Escrever uma mensagem no console
+que diga se ela poderá ou não votar este ano (não é necessário
+considerar o mês em que a pessoa nasceu). -->
+
+<script>
+
+    /* ENTRADA  */
+   
+    const anoAtual = new Date().getFullYear();
+    const nascimento = 2000;
+
+    var i = (anoAtual-nascimento);
+
+    function podeVotar (i){
+        if (i >=16) { return 'Parabéns! Você poderá votar esse ano. Caso não tenha um título, dirija-se a uma agência do TSE'}
+    else { return 'Ops! Ainda não chegou sua hora de votar, aguarde mais um pouco.'}
+    }
+    
+    voto = podeVotar(i)
+
+console.log( "Ah, que bacana! Você possui " + i + " anos ");
+console.log(voto);
+
+
+    /* document.write("Nome: " + n 
+    + "<br>"
+    + "Idade: " + i
+    + "<br>"
+    + "Nasceu em: " + nascimento ); */
+</script>
