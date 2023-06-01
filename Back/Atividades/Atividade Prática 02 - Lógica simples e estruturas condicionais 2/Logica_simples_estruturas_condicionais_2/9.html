@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9</title>
+    
+    <script>
+        var velocidade = Number(prompt('Informe a velocidade do carro (km/h): '));
+        var limite = 80;
+        var multa = 5;
+        
+        if (velocidade > limite)
+        {
+            var excesso = velocidade - limite;
+            var valorMulta = excesso * multa;
+
+            console.log(`Você foi multado em R$ ${valorMulta}`);
+        }
+        else
+        {
+            console.log(`Parabéns! Você é um cidadão exemplar.`);
+        }
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
+  
+

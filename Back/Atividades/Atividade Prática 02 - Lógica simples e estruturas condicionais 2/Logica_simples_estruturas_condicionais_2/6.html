@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6</title>
+    
+    <script>
+        var numero1 = Number(prompt("Informe o primeiro número"));
+        var numero2 = Number(prompt("Informe o segundo número"));
+        var operador = prompt("Informe o operador (+, -, * ou /)");
+
+        var resultado;
+
+        switch (operador) {
+            case '+':
+                resultado = numero1 + numero2;
+                break;
+            case '-':
+                resultado = numero1 - numero2;
+                break;
+            case '*':
+                resultado = numero1 * numero2;
+                break;
+            case '/':
+                resultado = numero1 / numero2;
+                break;
+            default:
+                console.log("Não reconheço o operador informado");
+                resultado = undefined;
+        }
+
+        console.log(`O resultado é: ${resultado}`);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
+

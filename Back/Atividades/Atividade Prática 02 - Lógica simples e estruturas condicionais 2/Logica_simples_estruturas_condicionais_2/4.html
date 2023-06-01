@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4</title>
+    
+    <script>
+        var valorFabrica = Number(prompt("Informe o valor do carro:"));
+        
+        var valorDistribuidor = (valorFabrica * 28) / 100;
+        var valorImpostos = (valorFabrica * 45) / 100;
+        var valorFinal = valorFabrica + valorImpostos + valorDistribuidor;
+
+        console.log(`O valor final do carro é: R$ ${valorFinal.toFixed(2)}`);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
+

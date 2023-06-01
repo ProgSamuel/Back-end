@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5</title>
+    
+    <script>
+        var altura = Number(prompt("Informe a altura em METROS: "));
+        var peso = Number(prompt("Informe o peso em KILOS: "));
+        var imc = peso / (altura * altura);
+
+        console.log(`Seu IMC é: ${imc}`);
+
+        if (imc < 18.5) {
+            console.log("Você está abaixo da faixa de peso ideal");
+        } else if (imc > 24.99) {
+            console.log("Você está acima da faixa de peso ideal");
+        } else { 
+            // >= 18.5 && <= 24.99
+            console.log("Você está dentro da faixa de peso ideal");
+        }
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
+
