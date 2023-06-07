@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+        3. Escreva um algoritmo que faça a tabuada de um número e
+apresente o resultado de acordo com o modelo a seguir, sabendo
+que o multiplicando deverá ser fornecido pelo usuário (n) e a
+quantidade de iterações também (i).
+1 * 2 = 2
+2 * 2 = 4
+3 * 2 = 6
+...
+     -->
+
+    <script>
+      const multiplicando = parseInt(prompt("Digite o número para a tabuada:"));
+      const iteracoes = parseInt(prompt("Digite a quantidade de iterações:"));
+
+      for (let i = 1; i <= iteracoes; i++) {
+        const resultado = multiplicando * i;
+        document.write(`${i} * ${multiplicando} = ${resultado}<br>`);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    //     7. Desenvolva um algoritmo que leia 10 números, calcule e escreva a
+    // média aritmética dos valores lidos, a quantidade de valores
+    // positivos, a quantidade de valores negativos e o percentual de
+    // valores negativos e positivos.
+
+    var quantidadeDePositivos = 0;
+    var quantidadeDeNegativos = 0;
+    var quantidadeDeValores = 0;
+    var soma = 0;
+
+    while (quantidadeDeValores < 10) {
+      var numero = parseInt(
+        prompt("Digite um número " + (quantidadeDeValores + 1) + ":")
+      );
+      soma += numero;
+      quantidadeDeValores++;
+
+      if (numero > 0) {
+        quantidadeDePositivos++;
+      } else if (numero < 0) {
+        quantidadeDeNegativos++;
+      }
+      debugger;
+    }
+    var media = soma / 10;
+
+    var percentual = (quantidadeDePositivos / 10) * 100;
+    var percentual1 = (quantidadeDeNegativos / 10) * 100;
+
+    console.log('${media}, ${percentual}, ${percentual1}, ${quantidadeDeNegativos} e ${quantidadeDePositivos}');
+  </script>
+</html>
