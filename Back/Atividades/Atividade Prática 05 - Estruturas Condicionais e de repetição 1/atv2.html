@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- ATIVIDADE
+    
+            Desenvolva um aplicativo que leia o salário e o sexo de vários
+            funcionários. No final, mostre o total de salários pagos aos homens e
+            o total pago às mulheres. O programa vai perguntar ao usuário se
+            ele quer continuar ou não sempre que ler os dados de um
+            funcionário.
+    
+    -->
+    <script>
+      let mTotal = 0;
+      let fTotal = 0;
+      let continuar = true;
+
+      while (continuar) {
+        let salario = Number(
+          prompt(`Digite o salário do funcionário no campo abaixo: `)
+        );
+
+        if (salario <= 0) {
+          document.write(
+            ` Você digitou o valor " ${salario} " para salário, e neste campo só é aceito valor MAIOR QUE ZERO! <br>`
+          );
+          break;
+        } 
+        
+            else {
+                    let sexo = prompt(
+                        `Digite o sexo do funcionário (M para masculino, F para feminino):)`
+                    ).toUpperCase();
+
+                    if (sexo === "M") {
+                                mTotal += salario;
+                            } else if (sexo === "F") {
+                                fTotal += salario;
+                            } else if (sexo !== "M" || "F") {
+                                document.write(` Você digitou " ${sexo} ", e neste campo é aceito M para masculino e F para feminino  <br>`);
+                                break;
+                            }
+
+                    const resposta = prompt("Deseja continuar? (S para sim, N para não)").toUpperCase();
+                    continuar = resposta === "S";
+
+                    
+        }
+      }
+
+      document.write(`Total de salários pagos aos homens: ${mTotal} <br>`);
+      document.write("Total de salários pagos às mulheres: " + fTotal);
+    </script>
+  </body>
+</html>

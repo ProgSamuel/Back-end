@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <!-- ATIVIDADE
+    
+            6. Faça um programa que leia a largura e o comprimento de um
+            terreno retangular, calculando e mostrando a sua área em m2. O
+            programa também deve mostrar a classificação desse terreno, de
+            acordo com a lista abaixo:
+
+                    Abaixo de 100m2 = TERRENO POPULAR
+                    Entre 100m2 e 500m2 = TERRENO MASTER
+                    Acima de 500m2 = TERRENO VIP
+            
+    -->
+    <script>
+
+        let largura = Number(prompt(`Digite a LARGURA do terreno`));
+        let cumprimento = Number(prompt (`Digite o CUMPRIMENTO`));
+
+        let medida = largura*cumprimento;
+
+        if (largura > 0 && cumprimento >0) {
+            if(medida <100) {
+            document.write( "TERRENO POPULAR" )
+        }
+
+        else if ( medida <=500){
+            document.write( "TERRENO MASTER" )
+        }
+
+        else if (medida >500) {
+            document.write( "TERRENO VIP" )
+        }
+        } else {
+            document.write( "Digite algum valor ACIMA DE ZERO" ) }
+
+        
+
+        
+       
+
+ 
+    </script>
+</body>
+</html>

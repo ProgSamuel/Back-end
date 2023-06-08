@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <!-- ATIVIDADE
+    
+            5. Faça um algoritmo que pergunte a distância que um passageiro
+            deseja percorrer em Km. Calcule o preço da passagem, cobrando
+            R$0.50 por Km para viagens até 200Km e R$0.45 para viagens mais
+            longas.
+    
+    -->
+    <script>
+
+        let distancia = Number(prompt("Digite a distância que será pecorrida: "));
+        let passagem = 0
+
+        if(distancia <=0 ){
+            document.write("Digite uma distância válida.")
+        } else {
+            if (distancia <=200 ){
+             passagem = distancia * 0.50  
+        } else {
+            passagem = distancia* 0.45
+        }
+
+        document.write(`A distância pecorrida foi ${distancia}km, e o preço da viagem é de R$${passagem}`)
+        }
+
+       
+       
+
+ 
+    </script>
+</body>
+</html>

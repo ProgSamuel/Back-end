@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- ATIVIDADE
+    
+            4. Numa promoção exclusiva para o Dia da Mulher, uma loja quer dar
+            descontos para todos, mas especialmente para mulheres. Faça um
+            programa que leia nome, sexo e o valor das compras do cliente e
+            calcule o preço com desconto. Sabendo que:
+
+                    a. Homens ganham 5% de desconto
+                    b. Mulheres ganham 13% de desconto
+    
+    -->
+    <script>
+      let nome = prompt(`Digite seu nome para poder calcular o DESCONTO:`);
+      let sexo = prompt(`Digite o sexo do funcionário (M para masculino, F para feminino):)`).toUpperCase();
+      let valorDasCompras = Number(prompt(`Digite o valor total da compra:`));
+
+      const homemDesconto = 5;
+      const mulherDesconto = 13;
+
+      /* -> O NOME TEM QUE SER VÁLIDO 
+      -> O VALOR DA COMPRA TEM QUE SER ACIMA DE ZERO - colocar o break */
+
+      
+      if(!nome){
+        document.write("Digite um nome válido!")
+
+      }
+
+      if(valorDasCompras <= 0){
+        document.write("Digite um valor POSITIVO!");
+      } else{
+        if (sexo === "M") {
+        let valorFinalHomem = valorDasCompras - (valorDasCompras * homemDesconto) / 100;
+        document.write(`${nome} <br> O valor da sua compra foi: R$ ${valorDasCompras} e com o desconto de ${homemDesconto}%, você irá pagar: R$ ${valorFinalHomem}`);
+      } else if (sexo === "F") {
+        let valorFinalMulher = valorDasCompras - (valorDasCompras * mulherDesconto) / 100;
+        document.write(` ${nome} <br> O valor da sua compra foi: R$ ${valorDasCompras} e com o desconto de ${mulherDesconto}%, você irá pagar: R$ ${valorFinalMulher}`);
+      } else if (sexo !== "M" || "F") {
+        document.write(
+          ` Você digitou " ${sexo} ", e neste campo é aceito M para masculino e F para feminino  <br>`
+        );
+      }
+      }
+
+      
+
+      
+
+      
+    </script>
+  </body>
+</html>

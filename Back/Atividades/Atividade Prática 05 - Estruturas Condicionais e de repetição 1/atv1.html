@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- ATIVIDADE
+    
+            Faça um algoritmo que leia a idade de vários alunos de uma turma.
+            O programa vai parar quando for digitada a idade 999. No final,
+            mostre quantos alunos existem na turma e qual é a média de idade
+            do grupo.
+    
+    -->
+    <script>
+      let somaIdade = 0;
+      let quantidadeAlunos = 0;
+
+      while (true) {
+        let idade = parseInt(
+          prompt("Digite aqui a idade do aluno: Para sair, digite o número 999")
+        );
+
+        if (idade === 999) {
+          break;
+        }
+
+        somaIdade += idade;
+        quantidadeAlunos++;
+      }
+
+      if (quantidadeAlunos > 0) {
+        let media = somaIdade / quantidadeAlunos;
+        document.write("Alunos na turma: " + quantidadeAlunos + "<br>");
+        document.write("Média da idade: " + media.toFixed(2));
+      } else {
+        document.write("Inválido");
+      }
+    </script>
+  </body>
+</html>

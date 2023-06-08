@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- ATIVIDADE
+    
+            3. Crie um algoritmo que leia o valor inicial da contagem, o valor final e
+            o incremento, mostrando em seguida todos os valores no intervalo:
+                Ex:
+                    Digite o primeiro Valor: 3
+                    Digite o último Valor: 10
+                    Digite o incremento: 2
+                    Contagem: 3 5 7 9 Acabou!
+        
+    -->
+    <script>
+      let priValor = Number(prompt(`Digite o primeiro valor: `));
+      let ultValor = Number(prompt(`Digite o último valor: `));
+      let incremento = Number(prompt(`Digite o incremento: `));
+
+      document.write(`O primeiro valor é: ${priValor} <br>`);
+      document.write(`O último valor é: ${ultValor} <br> `);
+      document.write(`O incremento é: ${incremento} <br> `);
+      document.write(`Contagem `);
+
+      if (ultValor < priValor) {
+        document.write(`O último valor é menor que o primeiro valor <br>`);
+      }
+
+      for (
+        let contagem = priValor;
+        contagem <= ultValor;
+        contagem += incremento
+      ) {
+        if (
+          (priValor === ultValor && ultValor === incremento) ||
+          incremento > ultValor
+        ) {
+          document.write(
+            `Os 3 valores estão iguais ou o incremento inserido é maior ou igual ao o último valor <br>`
+          );
+          break;
+        }
+
+        document.write(`${contagem} , `);
+      }
+
+      document.write(`ACABOU!! <br>`);
+    </script>
+  </body>
+</html>
