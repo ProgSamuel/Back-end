@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- ATIVIDADE
+
+        18. Uma loja de eletrodomésticos estabeleceu as seguintes
+modalidades de pagamento para a venda de suas mercadorias:
+
+    À vista ... desconto de 2,5% sobre o preço de tabela; 
+    De 2 até 5 vezes ... preço de tabela, sem desconto ou acréscimo;
+    De 6 até 10 vezes ... juros de 6% sobre o preço de tabela;
+    De 11 até 15 vezes ... juros de 13% sobre o preço de tabela.
+
+    Escreva um algoritmo que armazene o preço de tabela e o número
+de vezes em que o pagamento será feito. Calcule o valor de cada
+parcela e o preço total da compra e imprima no console.
+-->
+
+    <script>
+      let precoTabela = parseFloat(prompt("Digite o preço de tabela do produto: "));
+      let numParcelas = parseInt(prompt("Digite o número de parcelas desejado: "));
+
+      let valorParcela;
+      let precoTotal;
+
+      if (numParcelas === 1) {valorParcela = precoTabela - precoTabela * 0.025;
+        precoTotal = valorParcela;
+      } else if (numParcelas >= 2 && numParcelas <= 5) {valorParcela = precoTabela;
+        precoTotal = precoTabela;
+      } else if (numParcelas >= 6 && numParcelas <= 10) {valorParcela = (precoTabela * 1.06) / numParcelas;
+        precoTotal = precoTabela * 1.06;
+      } else if (numParcelas >= 11 && numParcelas <= 15) {valorParcela = (precoTabela * 1.13) / numParcelas;
+        precoTotal = precoTabela * 1.13;
+      } else {
+        console.log("Número de parcelas inválido.");
+        process.exit(1);
+      }
+
+      console.log("Valor de cada parcela: " + valorParcela.toFixed(2));
+      console.log("Preço total da compra: " + precoTotal.toFixed(2));
+    </script>
+  </body>
+</html>

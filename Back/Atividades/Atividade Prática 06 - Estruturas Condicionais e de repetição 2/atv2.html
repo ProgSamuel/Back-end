@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- ATIVIDADE
+
+    2. Para o mesmo exercício acima insira mais uma variável a
+condicional, além de saber se o motorista tem 18 anos ou mais,
+temos que saber também se ele é habilitado para dirigir. Caso ele
+tenha idade maior ou igual a 18 anos e possua habilitação, insira no
+html “Pode dirigir” caso contrário imprima “Não pode dirigir”.
+
+-->
+
+    <script>
+      let idade = Number(prompt("Digite abaixo a idade do motorista"));
+      let habilitado = prompt("O motorista está habilitado? Digite 'S' para sim e 'N' para não").toUpperCase();
+
+      if (idade >= 18 && habilitado === "S") {
+        document.write("Pode dirigir");
+      } else if (idade <= 0) {
+        document.write("Digite uma idade válida");
+      } else {
+        document.write("Não pode dirigir");
+      }
+
+    </script>
+  </body>
+</html>

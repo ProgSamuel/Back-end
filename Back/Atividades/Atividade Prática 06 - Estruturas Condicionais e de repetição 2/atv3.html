@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- ATIVIDADE
+
+    3. Utilizando o IF, ELSE, ELSE IF crie uma estrutura para receber um
+número de 1 a 7 e imprimir no console o dia da Semana. Para este
+exercício assumimos que o dia 1 é Domingo, dia 2 é segunda e assim
+por diante. Caso o número recebido não esteja neste intervalo
+imprimir “Dia não reconhecido”.
+
+-->
+
+<script>
+    var diaDaSemanaNum = Number(
+      prompt("Informe um número correspondente ao dia da semana: ")
+    );
+    var diaDaSemanaStr;
+  
+    if (diaDaSemanaNum === 1) {
+      diaDaSemanaStr = "Domingo";
+      console.log(`${diaDaSemanaStr}`);
+    } else if (diaDaSemanaNum === 2) {
+      diaDaSemanaStr = "Segunda-feira";
+      console.log(`${diaDaSemanaStr}`);
+    } else if (diaDaSemanaNum === 3) {
+      diaDaSemanaStr = "Terça-feira";
+      console.log(`${diaDaSemanaStr}`);
+    } else if (diaDaSemanaNum === 4) {
+      diaDaSemanaStr = "Quarta-feira";
+      console.log(`${diaDaSemanaStr}`);
+    } else if (diaDaSemanaNum === 5) {
+      diaDaSemanaStr = "Quinta-feira";
+      console.log(`${diaDaSemanaStr}`);
+    } else if (diaDaSemanaNum === 6) {
+      diaDaSemanaStr = "Sexta-feira";
+      console.log(`${diaDaSemanaStr}`);
+    } else if (diaDaSemanaNum === 7) {
+      diaDaSemanaStr = "Sábado";
+      console.log(`${diaDaSemanaStr}`);
+    } else {
+      console.log("Dia não reconhecido");
+    }
+  </script>
+  
+  </body>
+</html>

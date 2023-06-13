@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- ATIVIDADE
+
+   4. Reescreva o exercício 3, utilizando apenas o SWITCH.
+
+-->
+
+
+    <script>
+        
+        var diaDaSemanaNum = Number(prompt('Informe um número correspondente ao dia da semana: '));
+        var diaDaSemanaStr;
+
+        switch (parseInt(diaDaSemanaNum)) {
+            case 1:
+                diaDaSemanaStr = "Domingo";
+                break;
+            case 2:
+                diaDaSemanaStr = "Segunda-feira";
+                break;
+            case 3:
+                diaDaSemanaStr = "Terça-feira";
+                break;
+            case 4:
+                diaDaSemanaStr = "Quarta-feira";
+                break;
+            case 5:
+                diaDaSemanaStr = "Quinta-feira";
+                break;
+            case 6:
+                diaDaSemanaStr = "Sexta-feira";
+                break;
+            case 7:
+                diaDaSemanaStr = "Sábado";
+                break;
+            default:
+                diaDaSemanaStr = "Dia não conhecido";
+        }
+
+        console.log(`Você selecionou o dia: ${diaDaSemanaStr}`);
+
+    </script>
+    
+</body>
+</html>

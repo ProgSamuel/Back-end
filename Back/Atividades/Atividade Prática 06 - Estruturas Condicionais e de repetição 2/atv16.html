@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- ATIVIDADE
+
+   16. Escreva um algoritmo que armazene o ano atual e o ano de
+nascimento de uma pessoa. Escrever uma mensagem no console
+que diga se ela poderá ou não votar este ano (não é necessário
+considerar o mês em que a pessoa nasceu).
+   
+-->
+
+    <script>
+      let anoAtual = new Date().getFullYear();
+      let anoNascimento = parseInt(prompt("Digite o ano de seu nascimento: "));
+
+      let idade = anoAtual - anoNascimento;
+
+      if (idade >= 16) {
+        console.log("Você poderá votar este ano!");
+      } else {
+        console.log("Você não poderá votar este ano.");
+      }
+    </script>
+  </body>
+</html>
