@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> ATV 4 </title>
+  </head>
+  <body>
+    <script>
+      /* 4. Crie um cadastro de pessoas onde o usuário informe o nome, idade
+e se está trabalhando ou não, se a pessoa estiver trabalhando
+
+pergunte para ele o salário que está ganhando. Para cada pessoa
+cadastrada, pergunte ao usuário se ele deseja continuar
+cadastrando ou não. No final, mostre as pessoas que estão
+desempregadas, as pessoas que estão empregadas separadas
+pelas que ganham mais que 2500 e menos que 2500.
+
+Exemplo de resultado:
+Pessoas desempregadas:
+Nome: Alessandro, Idade: 28
+Nome: Alessandro, Idade: 28
+
+Pessoas empregadas com salários menores que 2500:
+Nome: Alessandro, Idade: 28, Salário: 1500
+Nome: Alessandro, Idade: 28, Salário: 2400
+
+Pessoas empregadas com salários maiores que 2500:
+Nome: Alessandro, Idade: 28, Salário: 2700
+Nome: Alessandro, Idade: 28, Salário: 3000 */
+
+      let pessoas = [];
+
+      do {
+        let nome = prompt("Digite o seu nome:");
+        let idade = prompt("Digite a sua idade:");
+        let empregado = confirm(
+          "A pessoa está trabalhando? Selecione OK para sim e cancelar para não"
+        );
+        let pessoa = {
+          nome: nome,
+          idade: idade,
+          empregado: empregado,
+          salario: 0,
+        };
+
+        if (empregado) {
+          let salario = parseFloat(prompt("Informe o salário da pessoa:"));
+          pessoa.salario = salario;
+        }
+
+        pessoas.push(pessoa);
+        let continuar = confirm(
+          "Deseja continuar? Selecione OK para sim e cancelar para não"
+        );
+
+        if (!continuar) {
+          break;
+        }
+      } while (true);
+      let desempregados = [];
+      let salarioMenor = [];
+      let salarioMaior = [];
+
+      for (let index = 0; index < pessoas.length; index++) {
+        let pessoa = pessoas[index];
+        if (!pessoa.empregado) {
+          desempregados.push(pessoa);
+        } else if (pessoa.salario < 2500) {
+          salarioMenor.push(pessoa);
+        } else {
+          salarioMaior.push(pessoa);
+        }
+      }
+
+      console.log("Pessoas desempregadas: ");
+
+      for (let index = 0; index < desempregados.length; index++) {
+        let pessoa = desempregados[index];
+
+        console.log("Nome: " + pessoa.nome + ", idade: " + pessoa.idade);
+      }
+      console.log("Pessoas com salário menor que 2500: ");
+
+      for (let index = 0; index < salarioMenor.length; index++) {
+        let pessoa = salarioMenor[index];
+
+        console.log(
+          "Nome: " + pessoa.nome + ", idade: " + pessoa.idade,
+          "salário: " + pessoa.salario
+        );
+      }
+
+      console.log("Pessoas com salário maior que 2500: ");
+
+      for (let index = 0; index < salarioMaior.length; index++) {
+        let pessoa = salarioMaior[index];
+
+        console.log(
+          "Nome: " + pessoa.nome + ", idade: " + pessoa.idade,
+          "salário: " + pessoa.salario
+        );
+      }
+    </script>
+  </body>
+</html>
