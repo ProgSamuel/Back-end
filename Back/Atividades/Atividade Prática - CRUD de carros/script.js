@@ -43,12 +43,16 @@ function cadastrarVeiculo() {
 // ETAPA 2 - LISTAR OS VEÍCULOS
 
 function listarVeiculos() {
-  const listar = veiculosCadastrados.length( function (lista1){
+ /*  const listar = veiculosCadastrados.length( function (lista1){
     return lista1
   })
 
   console.log(` ID: ${lista.id} | Modelo: ${lista1.Modelo}| Cor: ${carro.Cor} | Preço: R$${carro.Preço}`)
+ */
 
+  for( const carro of veiculosCadastrados){
+    console.log(` ID: ${carro.id} | Modelo: ${carro.Modelo} | Marca: ${carro.Marca} | Cor: ${carro.Cor} | Preço: R$${carro.Preço}`)
+  }
   }
 
 
