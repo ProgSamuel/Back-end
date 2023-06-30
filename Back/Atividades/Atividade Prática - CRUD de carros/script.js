@@ -7,7 +7,7 @@ let id = 0;
 let qtdcadastrados = document.getElementById("qtdcadastrados");
 let veiculosCadastrados = [
   {
-    ID: 1,
+    id: 1,
     Modelo: "Civic",
     Marca: "Honda",
     Ano: 2014,
@@ -15,9 +15,9 @@ let veiculosCadastrados = [
     Preço: 40000,
   },
   {
-    ID: 2,
+    id: 2,
     Modelo: "Civic",
-    Marca: "Honda",
+    Marca: "Tesla",
     Ano: 2014,
     Cor: "Azul",
     Preço: 40000,
@@ -41,10 +41,30 @@ function cadastrarVeiculo() {
   return novoVeiculo;
 }
 // ETAPA 2 - LISTAR OS VEÍCULOS
-function listarVeiculos (){
-  document.write(`${veiculosCadastrados[0]}`)
 
+function listarVeiculos() {
+  const listar = veiculosCadastrados.length( function (lista1){
+    return lista1
+  })
+
+  console.log(` ID: ${lista.id} | Modelo: ${lista1.Modelo}| Cor: ${carro.Cor} | Preço: R$${carro.Preço}`)
+
+  }
+
+
+// ETAPA 3 - FILTRAR VEÍCULOS
+
+function filtrarVeiculosPorMarca() {
+  const marca = prompt("Digite a marca para filtrar os veículos: ")
+  const marcafiltro = veiculosCadastrados.filter(function (carro) {
+    return carro.Marca === marca
+  });
+  console.log(marcafiltro);
+  marcafiltro.forEach(function (carro) {
+    console.log(` ID: ${carro.id} | Modelo: ${carro.Modelo}| Cor: ${carro.Cor} | Preço: R$${carro.Preço}`)
+  })
 }
+
 
 do {
   comando = prompt(
@@ -53,7 +73,7 @@ do {
   switch (comando) {
     case "1": cadastrarVeiculo(); break;
     case "2": listarVeiculos(); break;
-    case "3": console.log("3 - Filtrar veículos por marca"); break;
+    case "3": filtrarVeiculosPorMarca(); break;
     case "4": console.log("4 - Atualizar veículo");break;
     case "5": console.log("5 - Remover veículo");break;
     case "6": console.log("sair do programa"); break;
