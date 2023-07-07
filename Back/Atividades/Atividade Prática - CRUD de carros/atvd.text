@@ -43,6 +43,6 @@ Escolha uma das opções para interagir com o sistema:
 
 // Regras:
         - Os dados de um veículo são: identificador, modelo, marca, ano, cor, preco  -> ok
-        - A opção de filtro deve ser por marca e ordenada pelo preco
-        - A lista de veículos deve estar ordenada pelo preco.
-        - Só deve ser possível atualizar a cor e o preço do veículo.
+        - A opção de filtro deve ser por marca e ordenada pelo preco -> ok
+        - A lista de veículos deve estar ordenada pelo preco. -> ok
+        - Só deve ser possível atualizar a cor e o preço do veículo. -> ok

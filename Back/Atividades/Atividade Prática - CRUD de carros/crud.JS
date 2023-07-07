@@ -36,16 +36,15 @@ function cadastrarVeiculo() {
   let novoVeiculo = { id: contadorId++, modelo, marca, ano, cor, preco };
 
   veiculosCadastrados.push(novoVeiculo);
-  veiculosCadastrados.sort((a, b) => a.preco - b.preco); // foi usada para ordenar de acordo com o preço - do menor p/ o maior
-
   console.log("Veículo cadastrado com sucesso!");
 }
 
 // ETAPA 2 - LISTAR VEÍCULOS
 
 function listarVeiculos() {
-  let lista = "";
+  veiculosCadastrados.sort((a, b) => a.preco - b.preco); // foi usada para ordenar de acordo com o preço - do menor p/ o maior
 
+  let lista = "";
   for (const veiculo of veiculosCadastrados) {
     lista += `ID: ${veiculo.id} | Modelo: ${veiculo.modelo} | Marca: ${veiculo.marca} | Ano: ${veiculo.ano} | Cor: ${veiculo.cor} | Preço: R$${veiculo.preco}\n`;
   }
@@ -72,6 +71,7 @@ function filtrarVeiculosPorMarca() {
   if (listaFiltrada === "") {
     console.log("Nenhum veículo encontrado com essa marca.");
   } else {
+    listaFiltrada.sort((a, b) => a.preco - b.preco)
     console.log(listaFiltrada);
   }
 }
@@ -110,7 +110,7 @@ function removerVeiculo() {
   for (let i = 0; i < veiculosCadastrados.length; i++) {
     if (veiculosCadastrados[i].id === identificador) {
       veiculoEncontrado = true;
-      veiculosCadastrados.splice(i, 1);
+      veiculosCadastrados.splice(i, 1); // Usei o splice pq ele retorna um novo array, após remover diante do id selecioando 
       console.log("Veículo " + identificador +" removido com sucesso!");
       break;
     }
@@ -120,8 +120,6 @@ function removerVeiculo() {
     console.log("Veículo não encontrado. Retorne ao menu inicial.");
   }
 }
-
-// Usei o splice pq ele retorna um novo array, após remover diante do id selecioando 
 
 // ETAPA 0 - LOOP
 let comando;
