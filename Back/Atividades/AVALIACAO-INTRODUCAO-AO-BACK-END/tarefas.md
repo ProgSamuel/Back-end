@@ -15,8 +15,8 @@
 # TAREFAS A SEREM FEITAS
 - [x] criar aplicação web
 - [] criar funcionalidade de cadastro do usuário
-  - [] criar api para cadastro de usuário (com console.log)
+  - [x] criar api para cadastro de usuário (com console.log)
     - definicões:
       - método: `GET`
       - rota: `/cadastro-de-usuario`
-  - [] criar variavel para armazenar usuários
+  - [] criar variavel para armezar usuários
