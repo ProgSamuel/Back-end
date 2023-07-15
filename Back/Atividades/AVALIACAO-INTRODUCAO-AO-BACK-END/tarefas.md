@@ -12,6 +12,12 @@
   - [] login sucesso: se o email + senha pertencer a algum usuário existente
   - [] retornar erro se nao pertencer a ninguem
 
+- [] criar recado:
+-identificador: (id) cada recado deve ser único
+-título: todos os recados deve possuir um título
+-descrição: recado 
+
+
 # TAREFAS A SEREM FEITAS
 - [x] criar aplicação web
 - [] criar funcionalidade de cadastro do usuário

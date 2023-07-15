@@ -26,28 +26,16 @@ const app = express();
 
 app.use(express.json());
 
+// rota teste
 app.post("/teste", function (requisicao, resposta) {
   console.log(requisicao.body);
   resposta.send("Olá mundo");
 });
 
+// rota login
 app.post("/login", function (requisicao, resposta) {
   const email = requisicao.body.email;
   const senha = requisicao.body.senha;
-/*   usando for of
-  let existeUsuario = false;
-  for (const usuario of usuarios) {
-    if (usuario.email === email && usuario.senha === senha) {
-      existeUsuario = true;
-    }
-  }
-
-  usando o some
-  const existeUsuario = usuarios.some(function (usuario) {
-    if(usuario.email === email && usuario.senha === senha) {
-      return true;
-    }
-  }); */
 
   // usando o find
   const usuario = usuarios.find(function (usuario) {
@@ -63,23 +51,9 @@ app.post("/login", function (requisicao, resposta) {
     resposta.status(400);
     resposta.send("usuário inválido");
   }
-
-/*   usando o filter
-  const usuariosEncontrados = usuarios.filter(function (usuario) {
-    if (usuario.email === email && usuario.senha === senha) {
-      return true;
-    }
-  });
-
-  if (usuariosEncontrados.length > 0) {
-    resposta.status(200);
-    resposta.send("usuario existe");
-  } else {
-    resposta.status(400);
-    resposta.send("usuário inválido");
-  } */
 });
 
+//rota cadastro 
 app.post("/cadastro-de-usuario", function (requisicao, resposta) {
   if (
     requisicao.body.nome === undefined ||
@@ -118,6 +92,19 @@ app.post("/cadastro-de-usuario", function (requisicao, resposta) {
   contador++;
 });
 
+
+
+//  -------------- RECADOS ---------------------------
+const verificarAutenticacao = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+
+  // O usuário não está autenticado, redirecione-o para a página de login ou retorne um erro
+  return res.status(401).json({ error: 'Acesso não autorizado' });
+}
+
+
 const recados = [
   {
     titulo: "Título 1",
@@ -127,7 +114,20 @@ const recados = [
 
 let contadorRecados = 0
 
-app.post("/recados", function (requisicao, resposta) {
+app.post("/recados/:id", verificarAutenticacao, (req, res) => {
+  // Restante do código para criação de recados
+  resposta.send("acesso");
+
+
+});
+
+
+// rota recados
+app.post("/recados/:id", function (requisicao, resposta) {
+
+  if (!user) {
+    return res.status(404).json({ error: "Usuario não encontrado" });
+  }
 
   if (
     requisicao.body.titulo === undefined ||
