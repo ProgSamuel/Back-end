@@ -1,159 +1,160 @@
-import express from "express";
-/* lista de ususarios
-   cada item é um objeto
-   o objeto possui as seguintes propriedades
-    - nome
-    - identificador (unico para cada usuario)
-    - email
-    - senha
-*/
-const usuarios = [
-  {
-    nome: "Teste 1",
-    identificador: 0,
-    email: "teste1@teste.com",
-    senha: "teste1",
-  },
-  {
-    nome: "Teste 2",
-    identificador: 1,
-    email: "teste2@teste.com",
-    senha: "teste2",
-  },
-];
-let contador = 2;
+import express, { json } from "express";
+
 const app = express();
 
-app.use(express.json());
+app.use(json());
 
-// rota teste
-app.post("/teste", function (requisicao, resposta) {
-  console.log(requisicao.body);
-  resposta.send("Olá mundo");
-});
+const users = [];
 
-// rota login
-app.post("/login", function (requisicao, resposta) {
-  const email = requisicao.body.email;
-  const senha = requisicao.body.senha;
+let id = 0;
 
-  // usando o find
-  const usuario = usuarios.find(function (usuario) {
-    if (usuario.email === email && usuario.senha === senha) {
-      return true;
-    }
-  });
+//Rota para criar um usuario
+app.post("/users", (req, res) => {
+  const nome = req.body.nome;
+  const email= req.body.email;
+  const senha = req.body.senha;
+  const user = { id, nome, email, senha, recados: [] };
+  users.push(user);
+  id++;
 
-  if (usuario) {
-    resposta.status(200);
-    resposta.json(usuario);
-  } else {
-    resposta.status(400);
-    resposta.send("usuário inválido");
-  }
-});
-
-//rota cadastro 
-app.post("/cadastro-de-usuario", function (requisicao, resposta) {
-  if (
-    requisicao.body.nome === undefined ||
-    requisicao.body.email === undefined ||
-    requisicao.body.senha === undefined
-  ) {
-    resposta.status(400);
-    resposta.send("Você deve enviar nome, email e senha");
-    return;
-  }
-  const novoUsuario = {
-    nome: requisicao.body.nome,
-    email: requisicao.body.email,
-    senha: requisicao.body.senha,
-    identificador: contador,
-  };
-
-  let possuiMesmoEmail = false;
-  for (const usuario of usuarios) {
-    if (usuario.email === novoUsuario.email) {
-      possuiMesmoEmail = true;
-    }
-  }
-
-  if (possuiMesmoEmail) {
-    resposta.status(400);
-    resposta.send("Já existe um usário cadastrado com esse email");
-  } else {
-    resposta.send("Usuário cadastrado com sucesso");
-    usuarios.push(novoUsuario);
-  }
-
-  console.log("possui mesmo", possuiMesmoEmail);
-  console.log(usuarios);
-  // AQUI DENTRO VAI A REGRA PARA CADASTRAR USUÁRIOS
-  contador++;
-});
-
-
-
-//  -------------- RECADOS ---------------------------
-const verificarAutenticacao = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-
-  // O usuário não está autenticado, redirecione-o para a página de login ou retorne um erro
-  return res.status(401).json({ error: 'Acesso não autorizado' });
+if(nome||senha||email === undefined){
+  res.status(400).json({ mensagem: "Insira dados válidos", user: user });
+}  else {
+  res.status(201).json({ mensagem: "usuario criado com sucesso", user: user });
 }
-
-
-const recados = [
-  {
-    titulo: "Título 1",
-    descricao : "Descrição 1"
-  }
-]
-
-let contadorRecados = 0
-
-app.post("/recados/:id", verificarAutenticacao, (req, res) => {
-  // Restante do código para criação de recados
-  resposta.send("acesso");
-
-
 });
 
+//Rota para listar todos os usuarios
+app.get("/users", (req, res) => {
+  res.json(users);
+});
 
-// rota recados
-app.post("/recados/:id", function (requisicao, resposta) {
+//Rota para obter o usuario pelo ID
+app.get("/users/:id", (req, res) => {
+  const id = req.params.id;
+  const user = users.find((e) => e.id === parseInt(id));
 
   if (!user) {
     return res.status(404).json({ error: "Usuario não encontrado" });
   }
-
-  if (
-    requisicao.body.titulo === undefined ||
-    requisicao.body.descricao === undefined 
-  ) {
-    resposta.status(401);
-    resposta.send("Você deve enviar um titulo e descrição");
-    return;
-  }
-
-  const novoRecado = {
-    titulo: requisicao.body.titulo,
-    descricao: requisicao.body.descricao,
-    identificador: contadorRecados++,
-  }
-
-  if (requisicao.body.titulo && requisicao.body.descricao !== undefined ){
-    recados.push(novoRecado);
-    resposta.send("Recado cadastrado com sucesso");
-
-  }
-  console.log(requisicao.body);
-  console.log(recados);
+  return res.status(200).json({ mesagem: "Usuario encontrado!", user: user });
 });
 
-app.listen(3000, function () {
-  console.log("Aplicação está rodando na porta 3000: http://localhost:3000");
-  console.log("ip local: http://:3000");
+//Rota para atualizar o usuario pelo ID
+app.put("/users/:id", (req, res) => {
+  const id = req.params.id;
+  const nome = req.body.nome;
+  const senha = req.body.senha;
+  const user = users.find((e) => e.id === parseInt(id));
+
+  if (!user) {
+    return res.status(404).json({ error: "Usuario não encontrado" });
+  }
+  if (nome && senha) {
+    user.nome = nome;
+    user.senha = senha;
+  } else if (nome && !senha) {
+    user.nome = nome;
+  } else {
+    user.senha = senha;
+  }
+
+  return res.status(200).json({ mensagem: "Usuario atualizado", user: user });
+});
+
+//Rota para deletar um usuario pelo ID
+app.delete("/users/:id", (req, res) => {
+  const id = req.params.id;
+  const user = users.findIndex((e) => e.id === parseInt(id));
+
+  if (user === -1) {
+    return res.status(404).json({ error: "Usuario não encontrado" });
+  }
+  users.splice(user, 1);
+  return res.status(200).json({ mensagem: "Usuario deletado" });
+});
+
+let idRecado = 0;
+
+//Rota para criar um recado
+app.post("/recados/:id", (req, res) => {
+  const id = req.params.id;
+  const titulo = req.body.titulo;
+  const descricao = req.body.descricao;
+  const recado = { id: idRecado, titulo, descricao };
+  const user = users.find((e) => e.id === parseInt(id));
+
+  if (!user) {
+    return res.status(404).json({ error: "Usuario não encontrado" });
+  }
+  user.recados.push(recado);
+  idRecado++;
+  return res.status(201).json({ mensagem: "Recado criado com sucesso", user });
+});
+
+//Rota para buscar recados de um usuario
+app.get("/recados/:id", (req, res) => {
+  const id = req.params.id;
+  const user = users.find((user) => user.id === parseInt(id));
+  if (!user) {
+    res.status(404);
+    res.send({ error: "Usuario não encontrado" });
+  }
+  res.status(200);
+  res.send({ mensagem: "Recados encontrados", recados: user.recados });
+});
+
+//Rota para editar um recado pelo ID
+app.put("/recados/:id/:idRecado", (req, res) => {
+  const userId = req.params.id;
+  const user = users.find((user) => user.id === parseInt(userId));
+  if (!user) {
+    res.status(404);
+    res.send({ error: "Usuario não encontrado" });
+  }
+
+  const id = req.params.idRecado;
+  const titulo = req.body.titulo;
+  const descricao = req.body.descricao;
+  const recado = user.recados.find((recado) => recado.id === parseInt(id));
+
+  if (!recado) {
+    res.status(404);
+    res.send({ error: "Recado não encontrado" });
+  }
+
+  recado.titulo = titulo || recado.titulo;
+  recado.descricao = descricao || recado.descricao;
+
+  res.status(200);
+  res.send({ mensagem: "Recado alterado", recado: recado });
+});
+
+//Rota para deletar um recado pelo ID
+app.delete("/recados/:id/:idRecado", (req, res) => {
+  const userId = req.params.id;
+  const user = users.find((user) => user.id === parseInt(userId));
+  if (!user) {
+    res.status(404);
+    res.send({ error: "Usuario não encontrado" });
+  }
+  const id = req.params.idRecado;
+  const recado = user.recados.find((recado) => recado.id === parseInt(id));
+
+  if (!recado) {
+    res.status(404);
+    res.send({ error: "Recado não encontrado" });
+  }
+
+  const novosRecados = user.recados.filter(
+    (recado) => recado.id !== parseInt(id)
+  );
+  user.recados = novosRecados;
+
+  res.status(200);
+  res.send({ mensagem: "Recado deletado", recados: novosRecados });
+});
+
+app.listen(3000, () => {
+  console.log("Servidor iniciado na porta 3000");
 });

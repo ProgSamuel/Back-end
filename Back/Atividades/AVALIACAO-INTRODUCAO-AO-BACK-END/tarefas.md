@@ -26,3 +26,63 @@
       - método: `GET`
       - rota: `/cadastro-de-usuario`
   - [] criar variavel para armezar usuários
+
+------------------------------------------
+
+  const verificarAutenticacao = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+
+  // O usuário não está autenticado, redirecione-o para a página de login ou retorne um erro
+  return res.status(401).json({ error: 'Acesso não autorizado' });
+}
+
+
+const recados = [
+  {
+    titulo: "Título 1",
+    descricao : "Descrição 1"
+  }
+]
+
+let contadorRecados = 0
+
+app.post("/recados/:id", verificarAutenticacao, (req, res) => {
+  // Restante do código para criação de recados
+  resposta.send("acesso");
+
+
+});
+
+
+// rota recados
+app.post("/recados/:id", function (requisicao, resposta) {
+
+  if (!user) {
+    return res.status(404).json({ error: "Usuario não encontrado" });
+  }
+
+  if (
+    requisicao.body.titulo === undefined ||
+    requisicao.body.descricao === undefined 
+  ) {
+    resposta.status(401);
+    resposta.send("Você deve enviar um titulo e descrição");
+    return;
+  }
+
+  const novoRecado = {
+    titulo: requisicao.body.titulo,
+    descricao: requisicao.body.descricao,
+    identificador: contadorRecados++,
+  }
+
+  if (requisicao.body.titulo && requisicao.body.descricao !== undefined ){
+    recados.push(novoRecado);
+    resposta.send("Recado cadastrado com sucesso");
+
+  }
+  console.log(requisicao.body);
+  console.log(recados);
+});
